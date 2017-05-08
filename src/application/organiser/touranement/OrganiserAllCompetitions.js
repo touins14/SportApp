@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import React, { Component } from 'react';
 
-class ClientCurrentCompetitionAdmin extends Component {
+class OrganiserAllCompetitions extends Component {
   render() {
     return (
 
@@ -12,4 +12,4 @@ class ClientCurrentCompetitionAdmin extends Component {
         );
   }
 }
-export default ClientCurrentCompetitionAdmin;
+export default OrganiserAllCompetitions;

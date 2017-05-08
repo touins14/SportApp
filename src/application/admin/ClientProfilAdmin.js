@@ -1,5 +1,6 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
+import { Link, withRouter } from 'react-router';
 import {
   Row,
   Col,
@@ -18,10 +19,21 @@ import {
   MenuItem,
   Badge,
 } from '@sketchpixy/rubix';
+@withRouter
 export default class ClientProfilAdmin extends React.Component {
-
+  constructor(props) {
+      super(props);
+      console.log(props);
+    this.state = {
+      id:''
+   };
+    }
 
   componentDidMount() {
+      var idc=localStorage.getItem('clientid');
+
+console.log(idc);
+
     var links = document.getElementsByClassName('gallery-1');
     $('.gallery-1').unbind('click').bind('click', function(event) {
       blueimp.Gallery(links, {
@@ -31,162 +43,164 @@ export default class ClientProfilAdmin extends React.Component {
     });
   }
   render() {
+
     return (
       <PanelContainer style={{marginTop: 30}}>
-        <Panel>
+        <Panel style={{background:'#43496a'}}>
           <PanelHeader>
             <Grid className='gallery-item' >
-              <Row>
-                <Col xs={12} className='fg-white' style={{padding: 12.5}}>
-                
-                <Col xs={3} style={{border: '2px solid #e9f0f5',marginTop:20}}>
-                  <a className='gallery-1 gallery-item-link' href={`/imgs/app/gallery/tumblr_n6es0tRk5w1st5lhmo1_1280.jpg`} title={this.props.title} style={{marginTop:20}}>
-                    <Image responsive src={`/imgs/app/gallery/tumblr_n6es0tRk5w1st5lhmo1_1280-thumb.jpg`} alt={this.props.title} width='200' height='150'/>
-                    <div className='black-wrapper text-center'>
-                      <Table style={{height: '100%', width: '100%'}}>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <Icon glyph='icon-outlined-magnifier-plus icon-3x' />
-                            </td>
-                          </tr>
-                        </tbody>
-                      </Table>
-                    </div>
-                  </a>
-                  <div className='text-center'>
+                          <Row>
 
-       <h5 className='fg-darkgrayishblue75 hidden-xs'>Ronaldo@gmail.com</h5>
-                    <h5 className='fg-darkgrayishblue75 hidden-xs'>22/22/1985</h5>
-                     <h5 className='fg-darkgrayishblue75 hidden-xs'>lachbouna</h5>
-                      <h5 className='fg-darkgrayishblue75 hidden-xs'>lach</h5>
-                      <h5 className='fg-darkgrayishblue75 hidden-xs'>22456789</h5>
+
+                <Col xs={3} className='fg-white' style={{marginTop:20}}>
+ <div style={{border: '2px solid #e9f0f5'}}>
+
+                  <a className='gallery-1 gallery-item-link' href={`/imgs/app/gallery/tumblr_n6es0tRk5w1st5lhmo1_1280.jpg`} title={this.props.title}>
+                    <Image responsive src={`/imgs/app/gallery/tumblr_n6es0tRk5w1st5lhmo1_1280-thumb.jpg`} alt={this.props.title} width='200' height='100'/>
+                  </a>
+
+
+
+       <h5 className='fg-darkgrayishblue75' style={{color:'#fff'}}>Ronaldo@gmail.com</h5>
+                    <h5 className='fg-darkgrayishblue75' style={{color:'#fff'}}>22/22/1985</h5>
+                     <h5 className='fg-darkgrayishblue75' style={{color:'#fff'}}>lachbouna</h5>
+                      <h5 className='fg-darkgrayishblue75' style={{color:'#fff'}}>lach</h5>
+                      <h5 className='fg-darkgrayishblue75' style={{color:'#fff'}}>22456789</h5>
                   </div>
+
                   </Col>
-                  <Col xs={9} style={{marginTop:40}}>
-                  <div className='text-center'> 
-                   <h3 className='fg-darkgrayishblue75 hidden-xs' style={{color:'red',marginRight:500,marginTop:40}}>Cristiano Ronaldo </h3>
-                    <div className="rating" style={{marginRight:20,marginTop:-100}}>
+
+
+
+                  <Col xs={4} style={{marginTop:60}}>
+                      <DropdownButton title='Compétitions' id='dropdown-basic' style={{background:'#20243f'}}>
+                      <MenuItem eventKey="1">Current Compétitions</MenuItem>
+                      <MenuItem eventKey="2">All Compétitions</MenuItem>
+                    </DropdownButton>
+                   <h3 className='fg-darkgrayishblue75' style={{color:'red'}}>Cristiano Ronaldo </h3>
+                  </Col>
+
+                  <Col xs={5} style={{marginTop:110}}>
+
+                  <div className="rating" style={{marginRight:20,marginTop:-100}}>
                   <a href="#5" title="Give 5 stars" style={{marginLeft:20}}>☆</a>
-                  <a href="#4" title="Give 4 stars" style={{marginLeft:20}}>☆</a>
+                  <a href="#4" title="Give 4 stars" style={{m0arginLeft:20}}>☆</a>
                    <a href="#3" title="Give 3 stars" style={{marginLeft:20}}>☆</a>
                   <a href="#2" title="Give 2 stars" style={{marginLeft:20}}>☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
                     </div>
-                   <div>
-                    <p style={{marginTop:-100,marginLeft:620}}>Speed</p>
-                    <p style={{marginTop:-38,marginLeft:470}}>Endurance</p>
-                    <p style={{marginTop:-38,marginLeft:305}}>Technique</p>
-                    <p style={{marginTop:-38,marginLeft:150}}>Shoot</p>
-                    <p style={{marginTop:-38,marginLeft:-12}}>Drible</p>
-               </div>
-                    <DropdownButton bsStyle='lightgreen' title='Compétitions' id='dropdown-basic' style={{marginRight:500,marginTop:-50}}>
-                      <MenuItem eventKey="1">Current Compétitions</MenuItem>
-                      <MenuItem eventKey="2">All Compétitions</MenuItem>
-                    </DropdownButton>
 
-                  </div>
+
 
                   </Col>
-                </Col>
-                <Col xs={12}>
-                <div style={{marginLeft:90,marginTop:20}}>
-      
-                        
-                          <div style={{marginRight:790}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Trophies </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
-                            </Badge>
-                         
-                          </div>
+      </Row>
+               <Row>
+               <Col xs={2}>
 
-                     <div style={{marginRight:500,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:150}}>
-                              <h5 style={{marginTop:1}}> Numbre of matchs </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+                            <Badge  style={{height:45,width:110,background:'#20243f'}}>
+
+                              <h4 style={{marginTop:1,marginRight:-2}}><Icon glyph='icon-fontello-trophy'/>Trophies</h4>
+
+                              <h4 style={{color:'fg-white',marginTop:-10}}>22</h4>
+
                             </Badge>
-                         
-                          </div>
-                      <div style={{marginRight:160,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:150}}>
-                              <h5 style={{marginTop:1}}> Numbre of gools </h5>
-                              <h4 style={{color:'rfg-white',marginTop:-13}}> 22</h4>
-                             
+
+               </Col>
+               <Col xs={2}>
+                            <Badge style={{height:45,width:110,background:'#20243f'}}>
+                              <h4 style={{marginTop:1}}><Icon glyph='icon-fontello-trophy' style={{marginRight:5}}/>Matchs </h4>
+                              <h4 style={{color:'fg-white',marginTop:-13}}>22</h4>
+
                             </Badge>
-                         
-                          </div>
-                      <div style={{marginLeft:130,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Teams </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+               </Col>
+               <Col xs={2}>
+                                   <Badge style={{height:45,width:110,background:'#20243f'}}>
+
+                              <h4 style={{marginTop:1}}><Icon glyph='icon-fontello-network' style={{marginRight:5}}/>Gools</h4>
+                              <h4 style={{color:'rfg-white',marginTop:-13}}>22</h4>
+
                             </Badge>
-                         
-                          </div>
-                      <div style={{marginLeft:370,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Timming </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+               </Col>
+               <Col xs={2}>
+
+                            <Badge style={{height:45,width:110,background:'#20243f'}}>
+                            <h4 style={{marginTop:1}}><Icon glyph='icon-fontello-users-1' style={{marginRight:5}}  />Teams</h4>
+                              <h4 style={{color:'fg-white',marginTop:-13}}>22</h4>
+
                             </Badge>
-                         
-                      </div>
-                      <div style={{marginLeft:610,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Cards </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+
+               </Col>
+               <Col xs={2}>
+                                           <Badge style={{height:45,width:110,background:'#20243f'}}>
+
+                              <h4 style={{marginTop:1}}> <Icon glyph='icon-fontello-back-in-time' style={{marginRight:5}} />Timing</h4>
+
+                              <h4 style={{color:'fg-white',marginTop:-13}}>22</h4>
+
                             </Badge>
-                         
-                       </div>
-                </div>
-                <div style={{marginTop:60,marginRight:400}}>
-                                      <div style={{marginLeft:130,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Loss </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+               </Col>
+               <Col xs={2}>
+                                           <Badge style={{height:40,width:100,background:'#20243f'}}>
+
+                              <h4 style={{marginTop:1}}>  <Icon glyph='icon-feather-paper-stack' style={{marginRight:5}} />Cards</h4>
+                              <h4 style={{color:'fg-white',marginTop:-13}}>22</h4>
+
                             </Badge>
-                         
-                          </div>
-                      <div style={{marginLeft:370,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Draw </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+               </Col>
+
+
+
+
+               </Row>
+               <Row>
+               <Col xs={3}>
+               </Col>
+              <Col xs={2}>
+
+
+                            <Badge  style={{height:45,width:110,background:'red'}}>
+
+
+                              <h4 style={{marginTop:-1}}><Icon glyph='icon-fontello-cancel-2' style={{marginRight:5}} />Loss</h4>
+                              <h4 style={{marginTop:-11}}>22</h4>
                             </Badge>
-                         
-                      </div>
-                      <div style={{marginLeft:555,marginTop:-40}}>
-                            <Badge className='bg-green fg-white'  style={{height:40,width:100}}>
-                              <h5 style={{marginTop:1}}> Win </h5>
-                              <h4 style={{color:'fg-white',marginTop:-13}}> 22</h4>
-                             
+               </Col>
+           <Col xs={2}>
+
+                            <Badge style={{height:45,width:110,background:'yellow'}}>
+                             <h4 style={{marginTop:-1}}><Icon glyph='icon-dripicons-menu' style={{marginRight:5}} />Draw</h4>
+                              <h4 style={{color:'fg-white',marginTop:-11}}>22</h4>
+
                             </Badge>
-                         
-                       </div>
-                </div>
-                </Col>
+               </Col>
+              <Col xs={2}>
+                                <Badge style={{height:45,width:110,background:'green'}}>
+
+                              <h4 style={{marginTop:-1}}><Icon glyph='icon-fontello-check' style={{marginRight:5}} />Win</h4>
+                              <h4 style={{color:'fg-white',marginTop:-11}}> 22</h4>
+
+                            </Badge>
+               </Col>
+                <Col xs={3}>
+             </Col>
+               </Row>
                 <Col xs={12}>
-                <div className='text-center'> 
-                <h4 className='fg-darkgrayishblue75 hidden-xs' style={{textTransform: 'uppercase',marginTop:90}}>Vote</h4> 
+                <div className='text-center'>
+                <h4 className='fg-darkgrayishblue75' style={{textTransform: 'uppercase',marginTop:90}}>Vote</h4>
               </div>
-            
+
                 <Col xs={1}>
                 </Col>
                 <Col xs={10} style={{border: '2px solid #e9f0f5',height:380}}>
               <div>
                 <h6 className='fg-darkgrayishblue75 hidden-xs' style={{marginRight:400}}>Skills</h6>
-                 <h6 className='fg-darkgrayishblue75 hidden-xs' style={{marginTop:-25,marginLeft:400}}>Positions</h6>  
+                 <h6 className='fg-darkgrayishblue75 hidden-xs' style={{marginTop:-25,marginLeft:400}}>Positions</h6>
               </div>
                 <Col xs={6} style={{border: '2px solid #e9f0f5'}}>
-                  <div style={{marginTop:30,height:288,marginRight:22}}>   
+                  <div style={{marginTop:30,height:288,marginRight:22}}>
                           <div>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:13}}>
                               Endurance
                             </Badge>
@@ -196,14 +210,14 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
  <p style={{marginTop:-67,marginLeft:100}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
 
                       <div style={{marginTop:54}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Technique
                             </Badge>
@@ -213,14 +227,14 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:100}}> based on 2000 clients</p>
-                      </div> 
-                         
+                      </div>
+
                       <div style={{marginTop:-51}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:52}}>
                               Drible
                             </Badge>
@@ -230,13 +244,13 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:100}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
                       <div style={{marginTop:53}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Shoot
                             </Badge>
@@ -246,13 +260,13 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:100}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
                            <div style={{marginTop:53}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Speed
                             </Badge>
@@ -262,17 +276,17 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:100}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
                       </div>
                 </Col>
                 <Col xs={6} style={{border: '2px solid #e9f0f5',height:322}}>
-                                  <div>   
+                                  <div>
                           <div style={{marginTop:30}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:13}}>
                               Goolkeeper
                             </Badge>
@@ -282,14 +296,14 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:80}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
 
                       <div style={{marginTop:53}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Midfielder
                             </Badge>
@@ -299,13 +313,13 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
 <p style={{marginTop:-67,marginLeft:80}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
                       <div style={{marginTop:54}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Defender
                             </Badge>
@@ -315,13 +329,13 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
                       <p style={{marginTop:-67,marginLeft:80}}> based on 2000 clients</p>
-                      </div> 
+                      </div>
                       <div style={{marginTop:53}}>
-         
-                       
+
+
                             <Badge className='bg-green fg-white'style= {{marginRight:200,marginTop:-95}}>
                               Stricker
                             </Badge>
@@ -331,32 +345,32 @@ export default class ClientProfilAdmin extends React.Component {
                    <a href="#3" title="Give 3 stars" >☆</a>
                   <a href="#2" title="Give 2 stars" >☆</a>
                      <a href="#1" title="Give 1 star">☆</a>
-                   
+
                       </div>
-                      </div> 
+                      </div>
                       <p style={{marginTop:-67,marginLeft:80}}> based on 2000 clients</p>
                       </div>
                 </Col>
- 
+
                 </Col>
                    <Col xs={2}>
                 </Col>
                 </Col>
                  <Col xs={12}>
-                <div className='text-center'> 
-                <h4 className='fg-darkgrayishblue75 hidden-xs' style={{textTransform: 'uppercase',marginTop:90}}>Coments</h4> 
+                <div className='text-center'>
+                <h4 className='fg-darkgrayishblue75 hidden-xs' style={{textTransform: 'uppercase',marginTop:90}}>Coments</h4>
               </div>
-            
+
                 <Col xs={1}>
                 </Col>
                 <Col xs={8} style={{border: '2px solid #e9f0f5'}}>hahahahahah
-       
-                      
+
+
                 </Col>
                    <Col xs={2}>
                 </Col>
                 </Col>
-              </Row>
+
             </Grid>
           </PanelHeader>
         </Panel>

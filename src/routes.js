@@ -105,10 +105,13 @@ import OrganiserProfilOrganiser from './application/organiser/OrganiserProfilOrg
 import CurrentTouranement from './application/organiser/touranement/CurrentTouranement';
 import NewTouranement from './application/organiser/touranement/NewTouranement';
 import ManageStandByTouranement from './application/organiser/touranement/ManageStandByTouranement';
+import TouranementCalendar from './application/organiser/touranement/TouranementCalendar';
 import OrganiserGroupeStage from './application/organiser/touranement/OrganiserGroupeStage';
 import OrganiserKnockOut from './application/organiser/touranement/OrganiserKnockOut';
 import OrganiserDetailsMatch from './application/organiser/touranement/OrganiserDetailsMatch';
 import SecondNewTouranement from './application/organiser/touranement/SecondNewTouranement';
+import OrganiserCurrentCompetitions from './application/organiser/touranement/OrganiserCurrentCompetitions';
+import OrganiserAllCompetitions from './application/organiser/touranement/OrganiserAllCompetitions';
 
 
 import StandByFriendsOrganisers from './application/organiser/friend/StandByFriendsOrganisers';
@@ -253,10 +256,13 @@ const routes = (
     <Route path='Organiser/History' component={HistoryOrganiser} />
     <Route path='Organiser/CalendrierOrganiser' component={CalendrierOrganiser} />
 
+    <Route path='Organiser/OrganiserCurrentCompetitions' component={OrganiserCurrentCompetitions} />
+    <Route path='Organiser/OrganiserAllCompetitions' component={OrganiserAllCompetitions} />
     <Route path='Organiser/CurrentTouranement' component={CurrentTouranement} />
     <Route path='Organiser/NewTouranement' component={NewTouranement} />
     <Route path='Organiser/SecondNewTouranement' component={SecondNewTouranement} />
     <Route path='Organiser/ManageStandByTouranement' component={ManageStandByTouranement} />
+    <Route path='Organiser/TouranementCalendar' component={TouranementCalendar} />
     <Route path='Organiser/GroupeStage' component={OrganiserGroupeStage} />
     <Route path='Organiser/KnockOut' component={OrganiserKnockOut} />
     <Route path='Organiser/DetailsMatch' component={OrganiserDetailsMatch} />
@@ -266,7 +272,7 @@ const routes = (
 
     <Route path='Organiser/StandByFriends' component={StandByFriendsOrganisers} />
     <Route path='Organiser/OrganiserFriends' component={OrganiserFriends} />
-    
+
     <Route path='Organiser/Teams' component={TeamsOrganiser} />
     <Route path='Organiser/ProfilTeamOrganiser' component={ProfilTeamOrganiser} />
 
